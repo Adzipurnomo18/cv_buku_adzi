@@ -1,0 +1,5 @@
+
+body{font-family:Arial,sans-serif;background:#0f172a;color:#fff;margin:0;padding:40px}
+.book{max-width:900px;margin:auto;display:grid;gap:20px}
+.page{background:#1e293b;padding:40px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.cover{min-height:300px;display:flex;flex-direction:column;justify-content:center}
