@@ -10,13 +10,14 @@ let startPageIndex = 0;
 function getBookSize() {
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
-  const controlsSpace = viewportWidth <= 760 ? 86 : 96;
-  const maxOpenBookWidth = Math.min(1160, viewportWidth * 0.96);
-  const maxPageHeight = Math.min(700, viewportHeight - controlsSpace);
-  const pageWidthByHeight = maxPageHeight * (540 / 700);
-  const pageWidthByScreen = maxOpenBookWidth / 2;
-  const pageWidth = Math.floor(Math.max(315, Math.min(540, pageWidthByHeight, pageWidthByScreen)));
-  const pageHeight = Math.floor(pageWidth * (700 / 540));
+  const controlsSpace = viewportWidth <= 760 ? 82 : 72;
+  const pageRatio = 540 / 560;
+  const maxOpenBookWidth = Math.min(2000, viewportWidth * 0.985);
+  const maxPageHeight = Math.min(1040, viewportHeight - controlsSpace);
+  const pageWidthByHeight = maxPageHeight * pageRatio;
+  const pageWidthByScreen = viewportWidth <= 760 ? maxOpenBookWidth : maxOpenBookWidth / 2;
+  const pageWidth = Math.floor(Math.max(315, Math.min(1000, pageWidthByHeight, pageWidthByScreen)));
+  const pageHeight = Math.floor(pageWidth / pageRatio);
 
   return { pageWidth, pageHeight };
 }
@@ -35,6 +36,7 @@ function updateControls(pageIndex = 0) {
   pageStatus.textContent = `${String(current).padStart(2, "0")} / ${total}`;
   prevButton.disabled = pageIndex <= 0;
   nextButton.disabled = pageIndex >= total - 2;
+  bookElement.classList.toggle("cover-spread", pageIndex <= 0);
 }
 
 function initBook() {
@@ -54,7 +56,7 @@ function initBook() {
     size: "stretch",
     minWidth: 315,
     maxWidth: pageWidth,
-    minHeight: 410,
+    minHeight: 327,
     maxHeight: pageHeight,
     drawShadow: true,
     flippingTime: 900,

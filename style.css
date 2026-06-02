@@ -3,6 +3,7 @@
   --navy: #071735;
   --deep: #04102a;
   --blue: #075df2;
+  --cyan: #19a7ff;
   --sky: #4b93ff;
   --paper: #f7f9ff;
   --paper-2: #e7eefc;
@@ -56,8 +57,8 @@ body::before {
 
 .book-stage {
   position: relative;
-  width: min(1160px, 96vw);
-  height: min(760px, calc(100vh - 86px));
+  width: min(2000px, 98.5vw);
+  height: min(1040px, calc(100vh - 72px));
   display: grid;
   place-items: center;
   perspective: 2400px;
@@ -95,11 +96,11 @@ body::before {
 .book::before {
   content: "";
   position: absolute;
-  z-index: 8;
+  z-index: 48;
   top: 0;
   bottom: 0;
   left: 50%;
-  width: 16px;
+  width: 18px;
   pointer-events: none;
   transform: translateX(-50%);
   background:
@@ -108,11 +109,54 @@ body::before {
   box-shadow: -12px 0 26px rgba(0, 0, 0, .18), 12px 0 26px rgba(0, 0, 0, .16);
 }
 
+.book::after {
+  content: "";
+  position: absolute;
+  z-index: 49;
+  top: 4%;
+  bottom: 4%;
+  left: 50%;
+  width: 1px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.book.cover-spread::before {
+  width: 76px;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .24), transparent 8%, transparent 92%, rgba(255, 255, 255, .18)),
+    radial-gradient(ellipse at 50% 8%, rgba(94, 143, 255, .32), transparent 34%),
+    linear-gradient(90deg, #020815 0%, #0a1b42 18%, #041025 44%, #0c214f 70%, #020712 100%);
+  box-shadow:
+    -20px 0 35px rgba(0, 0, 0, .48),
+    20px 0 35px rgba(0, 0, 0, .5),
+    inset 9px 0 14px rgba(255, 255, 255, .12),
+    inset -9px 0 18px rgba(0, 0, 0, .72);
+}
+
+.book.cover-spread::after {
+  content: "ADZI PURNOMO  •  PORTFOLIO BOOK";
+  display: grid;
+  place-items: center;
+  width: 76px;
+  color: rgba(240, 247, 255, .96);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .42em;
+  line-height: 1;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  opacity: 1;
+  text-shadow: 0 0 16px rgba(0, 123, 255, .74);
+}
+
 .page {
   position: relative;
   overflow: hidden;
   width: 540px;
-  height: 700px;
+  height: 560px;
   padding: 44px;
   background: var(--paper);
   border: 1px solid rgba(16, 38, 78, .16);
@@ -167,6 +211,65 @@ body::before {
     radial-gradient(circle at 66% 48%, rgba(86, 159, 255, .7) 0 2px, transparent 3px);
 }
 
+.cover-left,
+.cover-right {
+  padding: 48px 58px;
+  border-color: rgba(156, 194, 255, .72);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .08), transparent 2.5%, transparent 97%, rgba(255, 255, 255, .08)),
+    radial-gradient(circle at 78% 45%, rgba(0, 104, 255, .5), transparent 32%),
+    linear-gradient(125deg, #050d20 0%, #071733 58%, #04245f 100%);
+}
+
+.cover-left {
+  padding-right: 90px;
+}
+
+.cover-right {
+  padding-left: 92px;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .5), transparent 13%, transparent 96%, rgba(255, 255, 255, .1)),
+    radial-gradient(circle at 47% 49%, rgba(0, 107, 255, .86), transparent 36%),
+    radial-gradient(circle at 78% 68%, rgba(0, 83, 209, .42), transparent 34%),
+    linear-gradient(128deg, #061126 0%, #071a42 58%, #02142e 100%);
+}
+
+.cover-left::before,
+.cover-right::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .94;
+}
+
+.cover-left::before {
+  background:
+    radial-gradient(circle at 77% 55%, transparent 0 145px, rgba(0, 113, 255, .58) 146px 147px, transparent 148px 174px, rgba(0, 113, 255, .28) 175px 176px, transparent 177px 211px, rgba(0, 113, 255, .18) 212px 213px, transparent 214px),
+    linear-gradient(90deg, transparent 0 58%, rgba(16, 118, 255, .44) 58% 58.4%, transparent 58.4%),
+    linear-gradient(135deg, transparent 0 76%, rgba(8, 104, 255, .5) 76% 77.6%, transparent 77.6%),
+    radial-gradient(circle at 88% 25%, rgba(35, 134, 255, .9) 0 2px, transparent 3px),
+    radial-gradient(circle at 83% 72%, rgba(35, 134, 255, .78) 0 2px, transparent 3px),
+    radial-gradient(circle at 90% 82%, rgba(35, 134, 255, .42) 0 1.5px, transparent 2.5px);
+}
+
+.cover-right::before {
+  background:
+    linear-gradient(135deg, transparent 0 66%, rgba(72, 143, 255, .58) 66% 66.3%, transparent 66.3%),
+    linear-gradient(135deg, transparent 0 79%, rgba(72, 143, 255, .4) 79% 79.4%, transparent 79.4%),
+    radial-gradient(circle at 85% 17%, rgba(36, 137, 255, .64) 0 1.7px, transparent 2.5px),
+    radial-gradient(circle at 92% 29%, rgba(36, 137, 255, .5) 0 1.4px, transparent 2.3px);
+}
+
+.cover-brand-row,
+.brand-copy,
+.cover-accent,
+.cover-dots,
+.signature-card {
+  position: relative;
+  z-index: 3;
+}
+
 h1,
 h2,
 h3,
@@ -213,6 +316,35 @@ p {
   box-shadow: 0 14px 28px rgba(0, 72, 255, .35);
 }
 
+.cover-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 86px;
+}
+
+.cover-brand-row .brand {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  margin: 0;
+  border: 1px solid rgba(132, 197, 255, .85);
+  border-radius: 8px;
+  font-size: 25px;
+  background: linear-gradient(145deg, #1d56d7 0%, #0587ff 100%);
+  box-shadow:
+    0 0 28px rgba(0, 124, 255, .56),
+    inset 0 1px 0 rgba(255, 255, 255, .32);
+}
+
+.brand-copy {
+  color: #f4f8ff;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 900;
+  letter-spacing: .52em;
+}
+
 .brand.large {
   width: 82px;
   height: 82px;
@@ -221,8 +353,11 @@ p {
 }
 
 .cover-left h1 {
+  text-transform: uppercase;
   font-size: 70px;
+  font-weight: 900;
   letter-spacing: 0;
+  text-shadow: 0 12px 24px rgba(0, 0, 0, .36);
 }
 
 .cover-left h1 span,
@@ -232,38 +367,89 @@ h2 span,
   color: var(--blue);
 }
 
+.cover-left h1 span {
+  color: #0587ff;
+  text-shadow: 0 0 26px rgba(0, 108, 255, .48);
+}
+
 .cover-left h2 {
-  margin-top: 22px;
+  margin-top: 20px;
   font-size: 22px;
   line-height: 1.25;
   color: #fff;
+  font-weight: 800;
 }
 
 .divider {
   position: relative;
   z-index: 2;
-  width: 82%;
+  width: 76%;
   height: 1px;
-  margin: 28px 0 14px;
-  background: linear-gradient(90deg, rgba(73, 137, 255, .95), transparent);
+  margin: 28px 0 18px;
+  background: linear-gradient(90deg, #1fa7ff 0 12%, rgba(54, 135, 255, .72) 12% 13%, rgba(68, 144, 255, .45) 13%, transparent 100%);
+}
+
+.cover-accent {
+  width: 74px;
+  height: 7px;
+  margin-bottom: 32px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #0ea5ff 0 80%, rgba(54, 145, 255, .7) 80% 100%);
+  box-shadow: 0 0 18px rgba(0, 149, 255, .72);
 }
 
 .small-line {
-  color: #b9d1ff;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #cbdcff;
   font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.small-line i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #0d89ff;
+  box-shadow: 0 0 13px rgba(0, 137, 255, .78);
 }
 
 .contact-mini {
   display: grid;
-  gap: 14px;
-  margin: 42px 0 0;
+  gap: 12px;
+  margin: 34px 0 0;
   padding: 0;
   list-style: none;
   color: #e6efff;
   font-size: 13px;
+  font-weight: 700;
 }
 
-.contact-mini li::before,
+.contact-mini li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.contact-mini li::before {
+  content: attr(data-icon);
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border: 1px solid rgba(146, 195, 255, .78);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  background: rgba(1, 13, 35, .64);
+  box-shadow:
+    0 0 0 4px rgba(47, 116, 255, .12),
+    inset 0 0 14px rgba(42, 117, 255, .18);
+}
+
 .contact-page li::before {
   content: "";
   display: inline-block;
@@ -278,19 +464,61 @@ h2 span,
 .portrait-cover {
   position: absolute;
   z-index: 2;
-  inset: 38px 34px 0 34px;
+  inset: 20px -44px 0 -24px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .portrait-cover img {
   display: block;
-  width: 78%;
-  height: 94%;
-  object-fit: cover;
-  object-position: center top;
-  filter: drop-shadow(0 28px 34px rgba(0, 0, 0, .42));
+  width: 100%;
+  height: 108%;
+  object-fit: contain;
+  object-position: right bottom;
+  filter:
+    drop-shadow(0 31px 34px rgba(0, 0, 0, .42))
+    drop-shadow(-18px 0 28px rgba(0, 94, 255, .16));
+}
+
+.cover-dots {
+  position: absolute;
+  top: 54px;
+  right: 70px;
+  width: 122px;
+  height: 86px;
+  background-image: radial-gradient(circle, rgba(84, 158, 255, .84) 0 2px, transparent 2.5px);
+  background-size: 22px 22px;
+  opacity: .78;
+}
+
+.signature-card {
+  position: absolute;
+  right: 52px;
+  bottom: 34px;
+  width: 318px;
+  min-height: 104px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  padding: 18px 28px 17px;
+  border: 1px solid rgba(165, 196, 255, .34);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(17, 18, 29, .72), rgba(16, 21, 42, .5));
+  box-shadow:
+    0 22px 34px rgba(0, 0, 0, .34),
+    inset 0 1px 0 rgba(255, 255, 255, .16);
+  backdrop-filter: blur(10px);
+}
+
+.signature-card span {
+  display: block;
+  width: 58px;
+  height: 4px;
+  margin-top: 11px;
+  border-radius: 99px;
+  background: #098cff;
+  box-shadow: 0 0 16px rgba(0, 139, 255, .72);
 }
 
 .signature {
@@ -304,6 +532,17 @@ h2 span,
   transform: rotate(-8deg);
 }
 
+.signature-card .signature {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  font-size: 47px;
+  line-height: .85;
+  white-space: nowrap;
+  transform: rotate(-5deg);
+  text-shadow: 0 10px 22px rgba(0, 0, 0, .54);
+}
+
 .book-label {
   position: absolute;
   z-index: 4;
@@ -313,6 +552,16 @@ h2 span,
   font-size: 10px;
   font-weight: 800;
   letter-spacing: .28em;
+}
+
+.signature-card .book-label {
+  position: relative;
+  right: auto;
+  bottom: auto;
+  margin-top: 8px;
+  color: #43a7ff;
+  font-size: 10px;
+  letter-spacing: .64em;
 }
 
 .page-no {
@@ -1018,7 +1267,101 @@ dd {
     display: none;
   }
 
+  .book.cover-spread::after {
+    display: none;
+  }
+
   .page {
     padding: 28px;
+  }
+
+  .cover-left,
+  .cover-right {
+    padding: 24px;
+  }
+
+  .cover-brand-row {
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .cover-brand-row .brand {
+    width: 44px;
+    height: 44px;
+    font-size: 21px;
+  }
+
+  .brand-copy {
+    font-size: 9px;
+    line-height: 1.45;
+    letter-spacing: .38em;
+  }
+
+  .cover-accent {
+    width: 64px;
+    height: 5px;
+    margin-bottom: 18px;
+  }
+
+  .cover-left h1 {
+    font-size: 42px;
+  }
+
+  .cover-left h2 {
+    margin-top: 12px;
+    font-size: 15px;
+  }
+
+  .divider {
+    width: 90%;
+    margin: 14px 0 10px;
+  }
+
+  .small-line {
+    gap: 6px;
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .contact-mini {
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 10px;
+  }
+
+  .contact-mini li {
+    gap: 9px;
+  }
+
+  .contact-mini li::before {
+    width: 24px;
+    height: 24px;
+    font-size: 7px;
+  }
+
+  .portrait-cover {
+    inset: 18px -42px 0 -38px;
+  }
+
+  .portrait-cover img {
+    width: 106%;
+    height: 108%;
+  }
+
+  .signature-card {
+    right: 18px;
+    bottom: 22px;
+    width: 220px;
+    min-height: 76px;
+    padding: 12px 16px;
+  }
+
+  .signature-card .signature {
+    font-size: 31px;
+  }
+
+  .signature-card .book-label {
+    font-size: 8px;
+    letter-spacing: .42em;
   }
 }
