@@ -564,6 +564,173 @@ h2 span,
   letter-spacing: .64em;
 }
 
+.book.cover-spread::before {
+  width: 82px;
+  border-radius: 7px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .28), transparent 7%, transparent 93%, rgba(255, 255, 255, .22)),
+    radial-gradient(ellipse at 50% 8%, rgba(94, 143, 255, .32), transparent 34%),
+    linear-gradient(90deg, #020714 0%, #0b214f 18%, #051028 45%, #0d2357 70%, #020713 100%);
+  box-shadow:
+    -24px 0 38px rgba(0, 0, 0, .56),
+    24px 0 38px rgba(0, 0, 0, .58),
+    inset 10px 0 16px rgba(255, 255, 255, .14),
+    inset -10px 0 20px rgba(0, 0, 0, .78);
+}
+
+.book.cover-spread::after {
+  content: "ADZI PURNOMO  -  PORTFOLIO BOOK";
+  width: 82px;
+  font-size: 10px;
+  letter-spacing: .48em;
+}
+
+.cover-left,
+.cover-right {
+  padding: 42px 70px 48px;
+}
+
+.cover-left {
+  padding-right: 100px;
+}
+
+.cover-right {
+  padding-left: 100px;
+}
+
+.cover-brand-row {
+  margin-bottom: 34px;
+}
+
+.cover-brand-row .brand {
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+  font-size: 20px;
+}
+
+.brand-copy {
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.cover-left h1 {
+  font-size: 58px;
+  line-height: .96;
+}
+
+.cover-left h1 span {
+  font-size: .72em;
+}
+
+.cover-left h2 {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.divider {
+  width: 82%;
+  margin: 12px 0 11px;
+}
+
+.cover-accent {
+  width: 52px;
+  height: 4px;
+  margin-bottom: 16px;
+}
+
+.small-line {
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+.contact-mini {
+  gap: 2px;
+  margin-top: 6px;
+  font-size: 8px;
+}
+
+.contact-mini li {
+  position: relative;
+  line-height: 1.1;
+}
+
+.contact-mini li::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  font-size: 0;
+}
+
+.contact-mini li::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 10px 0 -2px #fff;
+  transform: translateY(-50%);
+}
+
+.contact-mini .contact-user::after {
+  clip-path: polygon(50% 0, 72% 16%, 72% 42%, 60% 52%, 82% 100%, 18% 100%, 40% 52%, 28% 42%, 28% 16%);
+}
+
+.contact-mini .contact-github::after {
+  width: 6px;
+  height: 6px;
+  border: 1px solid #fff;
+  background: transparent;
+  box-shadow: none;
+}
+
+.contact-mini .contact-location::after {
+  width: 6px;
+  height: 6px;
+  border-radius: 50% 50% 50% 0;
+  transform: translateY(-50%) rotate(-45deg);
+  box-shadow: none;
+}
+
+.portrait-cover {
+  inset: 24px -36px 0 -42px;
+}
+
+.portrait-cover img {
+  width: 106%;
+  height: 111%;
+}
+
+.cover-dots {
+  top: 40px;
+  right: 58px;
+  width: 120px;
+  height: 92px;
+  background-size: 21px 21px;
+}
+
+.signature-card {
+  right: 44px;
+  bottom: 27px;
+  width: 304px;
+  min-height: 96px;
+  border-radius: 11px;
+}
+
+.signature-card .signature {
+  font-size: 35px;
+}
+
+.cover-left .page-no,
+.cover-right .page-no {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .page-no {
   position: absolute;
   left: 25px;
